@@ -134,6 +134,7 @@ article img {
     }
 
     div.copy button {
+      @apply hidden sm:flex;
       --code-background: var(--theme-background);
     }
 
