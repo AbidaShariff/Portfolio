@@ -91,6 +91,10 @@ button {
   @apply hover:cursor-pointer;
 }
 
+a {
+  @apply underline-offset-2;
+}
+
 a.button {
   @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/8 rounded-xl transition-colors;
 }
