@@ -202,22 +202,10 @@ article img {
   h4,
   h5,
   h6 {
-    @apply flex items-center my-6.5 font-semibold;
+    @apply my-6.5 font-semibold;
 
-    span[role='img'] {
-      @apply mx-2.5;
-    }
-
-    .heading-anchor {
-      @apply opacity-0 inline-block text-accent/10 ml-3 transition-opacity;
-    }
-
-    &::before {
-      @apply self-start;
-    }
-
-    &:hover .heading-anchor {
-      @apply !opacity-80;
+    a {
+      @apply underline-offset-3 text-inherit no-underline;
     }
   }
 
