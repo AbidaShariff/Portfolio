@@ -67,7 +67,7 @@ html {
 body {
   @apply transition-colors;
   font-display: block;
-  font-size-adjust: ex-height 0.53;
+  font-size-adjust: from-font var(--theme-font);
 }
 
 /* hide katex-html */
