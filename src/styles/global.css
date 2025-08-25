@@ -39,6 +39,7 @@
   --color-magenta: var(--theme-magenta);
   --color-cyan: var(--theme-cyan);
   --default-font-family: var(--theme-font), monospace;
+  --default-mono-font-family: var(--theme-font), monospace;
 }
 
 header {
@@ -120,7 +121,7 @@ article img {
   @apply text-base/7;
 
   code:not(.expressive-code code) {
-    @apply text-sm font-mono text-foreground/90 bg-foreground/5 px-2.5 py-1 rounded-lg whitespace-nowrap;
+    @apply text-sm text-foreground/90 bg-foreground/5 px-2 py-1 rounded-lg whitespace-nowrap;
   }
 
   & > *:not(div.expressive-code, img, figure, video, hr, blockquote, aside),
@@ -130,6 +131,8 @@ article img {
 
   div.expressive-code {
     @apply my-8;
+
+    --ec-codeFontFml: var(--default-mono-font-family);
 
     /* Prevent italics in code blocks */
     /* Feel free to remove this if you want italics */
