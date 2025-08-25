@@ -140,14 +140,22 @@ article img {
       font-style: normal !important;
     }
 
-    div.copy button {
-      @apply hidden sm:flex;
-      --code-background: var(--theme-background);
+    div.copy {
+      --button-spacing: 9px;
+
+      button {
+        @apply hidden sm:flex;
+        --code-background: var(--theme-background);
+      }
     }
 
     figure {
       @apply border-2 border-foreground/8 !rounded-xl;
       box-shadow: none !important;
+
+      &.has-title div.copy, &.is-terminal div.copy {
+        --button-spacing: 28px;
+      }
 
       &.has-title.is-terminal {
         span.title {
@@ -339,7 +347,7 @@ article img {
   }
 
   ul li {
-    list-style-type: "-";
+    list-style-type: '-';
   }
 
   ol li {
