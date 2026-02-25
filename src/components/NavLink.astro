@@ -5,8 +5,8 @@ interface Props {
   link: NavLink
 }
 
-const base = import.meta.env.BASE_URL
-const resolveUrl = (url: string) => url === '/' ? base : url === '#' || url.startsWith('http') ? url : `${base}${url.replace(/^\//, '')}`
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+const resolveUrl = (url: string) => url === '/' ? `${base}/` : url === '#' || url.startsWith('http') ? url : `${base}${url.startsWith('/') ? url : `/${url}`}`
 
 const { link } = Astro.props
 const resolvedUrl = resolveUrl(link.url)
