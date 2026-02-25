@@ -2,7 +2,7 @@ import type { SiteConfig } from '~/types'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
-  site: 'https://multiterm.stelclementine.com',
+  site: 'https://abidashariff.github.io',
   // The name of your site, used in the title and for SEO.
   title: 'MultiTerm',
   // The description of your site, used for SEO and RSS feed.

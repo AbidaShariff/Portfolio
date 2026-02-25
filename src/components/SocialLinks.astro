@@ -115,7 +115,7 @@ const containerClass = compact
   }
   {
     socialLinks.rss && (
-      <a href="/rss.xml" class="social-link">
+      <a href={`${import.meta.env.BASE_URL}rss.xml`} class="social-link">
         <span class="sr-only">RSS</span>
         <IconRss class={iconSize} />
       </a>

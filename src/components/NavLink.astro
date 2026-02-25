@@ -5,15 +5,21 @@ interface Props {
   link: NavLink
 }
 
+const base = import.meta.env.BASE_URL
+const resolveUrl = (url: string) => url === '/' ? base : url === '#' || url.startsWith('http') ? url : `${base}${url.replace(/^\//, '')}`
+
 const { link } = Astro.props
+const resolvedUrl = resolveUrl(link.url)
 const hasChildren = link.children && link.children.length > 0
 const isActive =
-  Astro.url.pathname === link.url ||
-  (link.url !== '/' && link.url !== '#' && Astro.url.pathname.startsWith(link.url))
+  Astro.url.pathname === resolvedUrl ||
+  (resolvedUrl !== base && resolvedUrl !== '#' && Astro.url.pathname.startsWith(resolvedUrl))
 const isChildActive = hasChildren && link.children!.some(
-  (child) =>
-    Astro.url.pathname === child.url ||
-    (child.url !== '/' && Astro.url.pathname.startsWith(child.url))
+  (child) => {
+    const childUrl = resolveUrl(child.url)
+    return Astro.url.pathname === childUrl ||
+    (childUrl !== base && Astro.url.pathname.startsWith(childUrl))
+  }
 )
 ---
 
@@ -28,16 +34,17 @@ const isChildActive = hasChildren && link.children!.some(
     </button>
     <ul class="nav-dropdown-menu invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-7 left-0 z-50 rounded-xl min-w-max">
       {link.children!.map((child) => {
+        const childUrl = resolveUrl(child.url)
         const childActive =
-          Astro.url.pathname === child.url ||
-          (child.url !== '/' && Astro.url.pathname.startsWith(child.url))
+          Astro.url.pathname === childUrl ||
+          (childUrl !== base && Astro.url.pathname.startsWith(childUrl))
         return (
           <li class="p-1 list-none">
             <a
               class:list={['underline whitespace-nowrap', { 'text-accent font-semibold': childActive }]}
               rel={child.external ? 'noopener noreferrer' : undefined}
               target={child.external ? '_blank' : undefined}
-              href={child.url}
+              href={childUrl}
               aria-current={childActive ? 'page' : undefined}
             >
               {child.name}
@@ -52,7 +59,7 @@ const isChildActive = hasChildren && link.children!.some(
     class:list={['underline', { 'text-accent font-semibold': isActive }]}
     rel={link.external ? 'noopener noreferrer' : undefined}
     target={link.external ? '_blank' : undefined}
-    href={link.url}
+    href={resolvedUrl}
     aria-current={isActive ? 'page' : undefined}
   >
     {link.name}
