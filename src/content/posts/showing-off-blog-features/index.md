@@ -2,7 +2,7 @@
 title: 'Showing Off Blog Features'
 published: 2025-07-20
 draft: false
-tags: ['web-app-pentesting', 'red-teaming', 'blockchain-security', 'iOS-pentesting', 'Android-pentesting']
+tags: ['web-app-pentesting', 'red-teaming', 'blockchain-security']
 toc: true
 coverImage:
   src: './cover.jpg'
