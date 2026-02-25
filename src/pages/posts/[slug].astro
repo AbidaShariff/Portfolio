@@ -139,7 +139,18 @@ if (postData.tags && postData.tags.length > 0) {
         {prev && <PostPreview post={prev} />}
         {next && <PostPreview post={next} />}
       </section>
-    ) : null
+    ) : (
+      <section>
+        <DividerText text="Recent Posts" />
+        {sortedPosts
+          .filter((p) => p.id !== post.id)
+          .reverse()
+          .slice(0, 3)
+          .map((recentPost) => (
+            <PostPreview post={recentPost} />
+          ))}
+      </section>
+    )
   }
   {
     siteConfig.giscus && (

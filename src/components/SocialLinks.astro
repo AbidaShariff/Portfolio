@@ -5,17 +5,23 @@ import IconMastodon from '~/icons/mastodon.svg'
 import IconTwitter from '~/icons/twitter.svg'
 import IconLinkedin from '~/icons/linkedin.svg'
 import IconBluesky from '~/icons/bluesky.svg'
+import IconInstagram from '~/icons/instagram.svg'
 import IconEmail from '~/icons/email.svg'
 import IconRss from '~/icons/rss.svg'
 
 interface Props {
   socialLinks: SocialLinks
+  compact?: boolean
 }
 
-const { socialLinks } = Astro.props
+const { socialLinks, compact = false } = Astro.props
+const iconSize = compact ? 'size-5' : 'size-7'
+const containerClass = compact
+  ? 'flex items-center gap-3'
+  : 'flex w-full max-w-md items-center justify-between'
 ---
 
-<div class="flex w-full max-w-md items-center justify-between">
+<div class={containerClass}>
   {
     socialLinks.github && (
       <a
@@ -25,7 +31,7 @@ const { socialLinks } = Astro.props
         class="social-link"
       >
         <span class="sr-only">GitHub</span>
-        <IconGithub class="size-7" />
+        <IconGithub class={iconSize} />
       </a>
     )
   }
@@ -38,7 +44,7 @@ const { socialLinks } = Astro.props
         class="social-link"
       >
         <span class="sr-only">Mastodon</span>
-        <IconMastodon class="size-7" />
+        <IconMastodon class={iconSize} />
       </a>
     )
   }
@@ -50,8 +56,8 @@ const { socialLinks } = Astro.props
         rel="noopener noreferrer"
         class="social-link"
       >
-        <span class="sr-only">Twitter</span>
-        <IconTwitter class="size-7" />
+        <span class="sr-only">X (Twitter)</span>
+        <IconTwitter class={iconSize} />
       </a>
     )
   }
@@ -64,7 +70,7 @@ const { socialLinks } = Astro.props
         class="social-link"
       >
         <span class="sr-only">LinkedIn</span>
-        <IconLinkedin class="size-7" />
+        <IconLinkedin class={iconSize} />
       </a>
     )
   }
@@ -77,7 +83,20 @@ const { socialLinks } = Astro.props
         class="social-link"
       >
         <span class="sr-only">Bluesky</span>
-        <IconBluesky class="size-7" />
+        <IconBluesky class={iconSize} />
+      </a>
+    )
+  }
+  {
+    socialLinks.instagram && (
+      <a
+        href={socialLinks.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <span class="sr-only">Instagram</span>
+        <IconInstagram class={iconSize} />
       </a>
     )
   }
@@ -90,7 +109,7 @@ const { socialLinks } = Astro.props
         class="social-link"
       >
         <span class="sr-only">Email</span>
-        <IconEmail class="size-7" />
+        <IconEmail class={iconSize} />
       </a>
     )
   }
@@ -98,7 +117,7 @@ const { socialLinks } = Astro.props
     socialLinks.rss && (
       <a href="/rss.xml" class="social-link">
         <span class="sr-only">RSS</span>
-        <IconRss class="size-7" />
+        <IconRss class={iconSize} />
       </a>
     )
   }

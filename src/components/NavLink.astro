@@ -6,13 +6,55 @@ interface Props {
 }
 
 const { link } = Astro.props
+const hasChildren = link.children && link.children.length > 0
+const isActive =
+  Astro.url.pathname === link.url ||
+  (link.url !== '/' && link.url !== '#' && Astro.url.pathname.startsWith(link.url))
+const isChildActive = hasChildren && link.children!.some(
+  (child) =>
+    Astro.url.pathname === child.url ||
+    (child.url !== '/' && Astro.url.pathname.startsWith(child.url))
+)
 ---
 
-<a
-  class="underline"
-  rel={link.external ? 'noopener noreferrer' : undefined}
-  target={link.external ? '_blank' : undefined}
-  href={link.url}
->
-  {link.name}
-</a>
+{hasChildren ? (
+  <div class="nav-dropdown relative">
+    <button
+      class:list={['underline cursor-pointer bg-transparent border-none p-0 text-accent', { 'text-accent font-semibold': isChildActive }]}
+      type="button"
+      aria-expanded="false"
+    >
+      {link.name} ▾
+    </button>
+    <ul class="nav-dropdown-menu invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-7 left-0 z-50 rounded-xl min-w-max">
+      {link.children!.map((child) => {
+        const childActive =
+          Astro.url.pathname === child.url ||
+          (child.url !== '/' && Astro.url.pathname.startsWith(child.url))
+        return (
+          <li class="p-1 list-none">
+            <a
+              class:list={['underline whitespace-nowrap', { 'text-accent font-semibold': childActive }]}
+              rel={child.external ? 'noopener noreferrer' : undefined}
+              target={child.external ? '_blank' : undefined}
+              href={child.url}
+              aria-current={childActive ? 'page' : undefined}
+            >
+              {child.name}
+            </a>
+          </li>
+        )
+      })}
+    </ul>
+  </div>
+) : (
+  <a
+    class:list={['underline', { 'text-accent font-semibold': isActive }]}
+    rel={link.external ? 'noopener noreferrer' : undefined}
+    target={link.external ? '_blank' : undefined}
+    href={link.url}
+    aria-current={isActive ? 'page' : undefined}
+  >
+    {link.name}
+  </a>
+)}

@@ -69,6 +69,7 @@ export type NavLink = {
   name: string
   url: string
   external?: boolean
+  children?: NavLink[]
 }
 
 export type AdmonitionType = 'tip' | 'note' | 'important' | 'caution' | 'warning'
@@ -152,6 +153,7 @@ export type SocialLinks = {
   mastodon?: string
   bluesky?: string
   linkedin?: string
+  instagram?: string
   email?: string
   rss?: boolean
 }
