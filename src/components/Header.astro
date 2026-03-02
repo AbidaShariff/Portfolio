@@ -20,34 +20,11 @@ const mobileLinks = siteConfig.navLinks.flatMap((link) =>
     <div class="flex items-center gap-3 sm:mr-3 ml-auto">
       {lightDarkAutoTheme && <LightDarkAutoButton />}
       {selectTheme && <SelectTheme />}
-      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
-        <button
-          id="nav-mobile-button"
-          class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
-          type="button"
-          aria-expanded="false"
-          aria-controls="nav-menu-list"
-        >
-          ▾
-        </button>
-        <ul
-          id="nav-mobile-list"
-          class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
-        >
-          {
-            mobileLinks.map((link) => (
-              <li class="p-1" aria-expanded="false">
-                <NavLink link={link} />
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
     </div>
   </div>
-  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
-    <div class="flex items-center justify-between">
-      <ul class="flex flex-row text-accent">
+  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <ul class="flex flex-row flex-wrap text-accent gap-y-1">
         {
           siteConfig.navLinks.map((link) => (
             <li class="mr-5" aria-expanded="true">
