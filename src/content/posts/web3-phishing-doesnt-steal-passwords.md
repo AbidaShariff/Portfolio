@@ -159,3 +159,13 @@ This mindset alone cuts down on risky clicks.
 
 Attackers have hijacked trusted accounts, posted phishing links, and drained almost $700K from victims who connected wallets.
 
+---
+
+## References
+
+[Vitalik Buterin X Account Hack](https://www.coindesk.com/business/2023/09/11/691k-stolen-as-hackers-take-over-vitalik-buterins-x-account)
+
+[BadgerDAO Hack Details](https://www.coindesk.com/business/2021/12/10/badgerdao-reveals-details-of-how-it-was-hacked-for-120m)
+
+[Inferno Drainer Deep Dive](https://www.group-ib.com/blog/inferno-drainer/)
+
