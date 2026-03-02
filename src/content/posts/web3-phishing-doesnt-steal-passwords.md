@@ -32,11 +32,11 @@ That's the big shift: **In Web3, your single action can move your assets.**
 
 And the interface? It looks familiar:
 
-- "Connect wallet"
-- "Verify"
-- "Claim"
-- "Mint"
-- "Airdrop eligible"
+"Connect wallet"
+"Verify"
+"Claim"
+"Mint"
+"Airdrop eligible"
 
 Feels like logging in, but it acts like you're approving a bank transfer.
 
@@ -46,9 +46,9 @@ Feels like logging in, but it acts like you're approving a bank transfer.
 
 With Web2, people got used to:
 
-- "Logging in is routine."
-- "Approving permissions is just part of it."
-- "Popups are annoying but harmless."
+"Logging in is routine."
+"Approving permissions is just part of it."
+"Popups are annoying but harmless."
 
 In Web3, those same popups can be the whole heist.
 
@@ -109,15 +109,15 @@ Attackers love this kind of ambiguity.
 Here's the mindset shift:
 
 **In Web2, security usually means you can undo things:**
-- Password resets
-- Account locks
-- Scam review
-- Centralized rollbacks
+Password resets
+Account locks
+Scam review
+Centralized rollbacks
 
 **In Web3, one click can be the point of no return:**
-- Approvals stick around unless you revoke them
-- Assets can move instantly
-- Incident response might only start after the money's gone
+Approvals stick around unless you revoke them
+Assets can move instantly
+Incident response might only start after the money's gone
 
 So your job isn't just "catch it after the fact." It's **prevent unsafe authorization in the first place.**
 
@@ -147,7 +147,7 @@ If users get used to clicking through endless prompts, they'll click through the
 
 ### If You're Defending Users or Organizations
 
-**1) New rule: "Don't click links" becomes "Don't sign surprises"**
+**1) "Don't click links" becomes "Don't sign surprises"**
 
 Phishing in Web3 means tricking people into signing stuff they don't get. Blind signing is a huge risk.
 
@@ -159,19 +159,3 @@ This mindset alone cuts down on risky clicks.
 
 Attackers have hijacked trusted accounts, posted phishing links, and drained almost $700K from victims who connected wallets.
 
-**4) Build a wallet-drainer incident response checklist**
-
-Speed is everything — if value moves fast, you can't just rely on detection. When it happens:
-
-- Stop using the site immediately.
-- Check and revoke suspicious approvals using wallet tools (most wallets support this now).
-- Move any remaining assets to a safer wallet if you think you've been compromised.
-- Save evidence — malicious URLs, transaction IDs, screenshots, timestamps.
-- Alert your community fast, using your official links page as the single source of truth.
-
-**5) Push for better key habits where it really counts**
-
-Key management is hard, especially for self-custody. What helps:
-
-- Use a "hot wallet" for risky stuff, and a separate wallet for real value.
-- For teams or treasuries, set up multi-person controls. One person's mistake shouldn't wipe out everything.
