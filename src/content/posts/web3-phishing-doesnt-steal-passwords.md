@@ -121,8 +121,6 @@ Incident response might only start after the money's gone
 
 So your job isn't just "catch it after the fact." It's **prevent unsafe authorization in the first place.**
 
-That's a product problem, a UX problem, and yes — still an AppSec problem.
-
 ---
 
 ## What You Can Do About It
