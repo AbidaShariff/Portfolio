@@ -56,7 +56,7 @@ if (about.length > 0) {
           <BlockHeader>Skills</BlockHeader>
           <div class="flex flex-wrap gap-2 py-6">
             {skills.map((skill) => (
-              <span class="px-3 py-1 text-sm border-2 border-accent/30 rounded-xl text-accent">
+              <span class="px-3 py-1 text-sm border border-accent/15 rounded-[3px] text-accent">
                 {skill}
               </span>
             ))}
@@ -141,7 +141,7 @@ if (about.length > 0) {
             </summary>
             <div class="flex flex-wrap gap-3 py-6">
               {certifications.map((cert) => (
-                <div class="border-2 border-accent/20 rounded-xl px-4 py-3">
+                <div class="border border-accent/15 rounded-[4px] px-4 py-3">
                   {cert.url ? (
                     <a href={cert.url} target="_blank" rel="noopener noreferrer" class="text-lg font-semibold text-heading2 underline">
                       {cert.title}
@@ -164,7 +164,7 @@ if (about.length > 0) {
           <BlockHeader>Projects</BlockHeader>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
             {projects.map((project) => (
-              <div class="border-2 border-accent/20 rounded-xl p-4">
+              <div class="border border-accent/15 rounded-[4px] p-4">
                 <h3 class="text-lg font-semibold text-heading2">
                   {project.url ? (
                     <a href={project.url} target="_blank" rel="noopener noreferrer">

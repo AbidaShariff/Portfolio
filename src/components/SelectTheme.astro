@@ -24,7 +24,7 @@ function kebabToTitleCase(str: string): string {
   </button>
   <dialog
     aria-label="select-theme"
-    class="text-foreground! bg-background max-h-5/6 max-w-5/6 border-double! border-4 border-accent/30 shadow-sm backdrop:backdrop-blur-sm open:flex mx-auto mt-16 mb-auto rounded-xl"
+    class="text-foreground! bg-background max-h-5/6 max-w-5/6 border! border-accent/15 shadow-sm backdrop:backdrop-blur-sm open:flex mx-auto mt-16 mb-auto rounded-[4px]"
   >
     <div class="dialog-frame flex grow flex-col gap-4 px-10 py-1 max-w-full">
       <button
@@ -36,7 +36,7 @@ function kebabToTitleCase(str: string): string {
       </button>
       <ul
         id="theme-change-list"
-        class="flex flex-col bg-background text-accent m-0 p-2 rounded-xl"
+        class="flex flex-col bg-background text-accent m-0 p-2 rounded-[4px]"
       >
         {
           siteConfig.themes.include.map((theme) => (

@@ -32,7 +32,7 @@ const isChildActive = hasChildren && link.children!.some(
     >
       {link.name} ▾
     </button>
-    <ul class="nav-dropdown-menu invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-7 left-0 z-50 rounded-xl min-w-max">
+    <ul class="nav-dropdown-menu invisible absolute flex flex-col bg-background shadow text-accent border border-accent/15 m-0 p-2.5 top-7 left-0 z-50 rounded-[4px] min-w-max">
       {link.children!.map((child) => {
         const childUrl = resolveUrl(child.url)
         const childActive =

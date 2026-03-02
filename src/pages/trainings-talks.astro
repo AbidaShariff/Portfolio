@@ -19,7 +19,7 @@ if (about.length > 0) {
       projects.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
           {projects.map((project) => (
-            <div class="border-2 border-accent/20 rounded-xl p-5 hover:border-accent/40 transition-colors">
+            <div class="border border-accent/15 rounded-[4px] p-5 hover:border-accent/40 transition-all hover:shadow-[0_0_20px_rgba(245,160,200,0.18),0_0_40px_rgba(245,160,200,0.08)]">
               <h2 class="text-xl font-semibold text-heading1">
                 {project.url ? (
                   <a href={project.url} target="_blank" rel="noopener noreferrer">

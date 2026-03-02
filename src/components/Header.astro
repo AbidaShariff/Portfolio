@@ -16,13 +16,13 @@ const mobileLinks = siteConfig.navLinks.flatMap((link) =>
 ---
 
 <header>
-  <div class="relative flex items-center justify-between bg-accent/10 rounded-xl">
+  <div class="relative flex items-center justify-between bg-accent/5 border border-accent/15 rounded-[4px]" style="box-shadow: 0 0 20px rgba(245, 160, 200, 0.06), 0 0 40px rgba(245, 160, 200, 0.03), inset 0 0 15px rgba(245, 160, 200, 0.02);">
     <div class="flex items-center gap-3 sm:mr-3 ml-auto">
       {lightDarkAutoTheme && <LightDarkAutoButton />}
       {selectTheme && <SelectTheme />}
     </div>
   </div>
-  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent">
+  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent capitalize">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <ul class="flex flex-row flex-wrap text-accent gap-y-1">
         {

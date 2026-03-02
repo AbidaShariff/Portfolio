@@ -133,26 +133,18 @@ const config: SiteConfig = {
     // Their values can be either a literal color (hex, rgb, hsl) or another theme key.
     // See themeKeys list in src/types.ts for available keys to override and reference.
     overrides: {
-      // Improve readability for aurora-x theme
-      // 'aurora-x': {
-      //   background: '#292929FF',
-      //   foreground: '#DDDDDDFF',
-      //   warning: '#FF7876FF',
-      //   important: '#FF98FFFF',
-      //   note: '#83AEFFFF',
-      // },
-      // Make the GitHub dark theme a little cuter
-      // 'github-light': {
-      //   accent: 'magenta',
-      //   heading1: 'magenta',
-      //   heading2: 'magenta',
-      //   heading3: 'magenta',
-      //   heading4: 'magenta',
-      //   heading5: 'magenta',
-      //   heading6: 'magenta',
-      //   separator: 'magenta',
-      //   link: 'list',
-      // },
+      'catppuccin-mocha': {
+        background: '#0d0d14',
+        accent: '#f5a0c8',
+        heading1: '#f5e0dc',
+        heading2: '#f5e0dc',
+        heading3: '#f5e0dc',
+        heading4: '#f5e0dc',
+        heading5: '#f5e0dc',
+        heading6: '#f5e0dc',
+        link: '#f5a0c8',
+        separator: '#1e1e2e',
+      },
     },
   },
   // Social links to display in the footer.

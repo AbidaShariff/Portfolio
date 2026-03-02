@@ -11,25 +11,36 @@ const { avatarImage, githubCalendar } = Astro.props
 ---
 
 <div class="my-6 md:mx-2">
+  <!-- Terminal Prompt -->
+  <div class="text-[13px] text-foreground/30 mb-4 tracking-wide">
+    <span class="text-accent text-glow-sm">abida@redsentry</span>:<span class="text-foreground/50">~/portfolio</span>$ cat about.md
+    <span class="cursor-blink"></span>
+  </div>
+
+  <!-- Banner -->
   <div
-    class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6"
+    class="relative border border-accent/15 rounded-[4px] p-7 bg-accent/5 mb-6"
+    style="box-shadow: 0 0 25px rgba(245, 160, 200, 0.07), 0 0 50px rgba(245, 160, 200, 0.04), 0 0 80px rgba(245, 160, 200, 0.02), inset 0 0 35px rgba(245, 160, 200, 0.025);"
   >
-    {
-      avatarImage && (
-        <Image
-          priority
-          src={avatarImage.src}
-          alt={avatarImage.alt}
-          class="rounded-full border-8 border-accent/15 size-36 aspect-square box-content shrink-0"
-          widths={[288]}
-          height={144}
-          width={144}
-        />
-      )
-    }
-    <div>
-      <div class:list={['m-4 max-w-full prose']}>
-        <slot />
+    <span class="absolute -top-2.5 left-4 bg-background px-2 text-[11px] text-foreground/30 tracking-wider">// about.md</span>
+    <div class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full">
+      {
+        avatarImage && (
+          <Image
+            priority
+            src={avatarImage.src}
+            alt={avatarImage.alt}
+            class="rounded-full border-2 border-accent/15 size-36 aspect-square box-content shrink-0"
+            widths={[288]}
+            height={144}
+            width={144}
+          />
+        )
+      }
+      <div>
+        <div class:list={['m-4 max-w-full prose']}>
+          <slot />
+        </div>
       </div>
     </div>
   </div>
