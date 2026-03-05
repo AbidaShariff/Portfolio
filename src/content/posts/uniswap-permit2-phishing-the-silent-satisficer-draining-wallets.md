@@ -1,7 +1,7 @@
 ---
 title: "Uniswap Permit2 Phishing: The Silent Signature Draining Wallets"
 published: 2026-03-06
-draft: false
+draft: true
 description: "Permit2 was built to improve token approvals. Attackers turned it into the most dangerous phishing vector in DeFi. Here is how they do it and how you can protect yourself."
 tags: ['web3', 'security']
 ---
