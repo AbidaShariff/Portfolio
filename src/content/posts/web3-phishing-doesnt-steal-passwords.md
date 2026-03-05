@@ -4,6 +4,9 @@ published: 2026-02-24
 draft: false
 description: 'If you work in AppSec, Red Teaming, or SOC, your gut says protect credentials. But Web3 phishing skips passwords entirely and goes straight for your wallet approvals.'
 tags: ['web3', 'security']
+coverImage:
+  src: ./web3-phishing-cover.png
+  alt: Web3 phishing attack illustration showing a hacker exploiting smart contracts
 ---
 
 If you've been working in Application Security, Red Teaming, SOC, or Cloud Security for a while, your gut reaction to phishing is probably something like:
