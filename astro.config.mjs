@@ -31,6 +31,9 @@ export default defineConfig({
   trailingSlash: siteConfig.trailingSlashes ? 'always' : 'never',
   compressHTML: true,
   prefetch: true,
+  build: {
+    assets: '_assets',
+  },
   markdown: {
     remarkPlugins: [
       [remarkDescription, { maxChars: 200 }],
