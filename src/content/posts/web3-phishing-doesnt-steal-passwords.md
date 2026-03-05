@@ -62,7 +62,7 @@ That's why wallet drainers aren't just phishing kits — they aim for **consent 
 
 On September 11, 2023, someone took over Vitalik Buterin's X account and posted a phishing link. The result? Over **$691,000 gone** after people clicked, connected their wallets, and approved the prompts.
 
-![Screenshot of the phishing tweet posted from Vitalik Buterin's compromised X account](/Portfolio/images/case-study-1/vitalik-scam-tweet.jpg)
+![Screenshot of the phishing tweet posted from Vitalik Buterin's compromised X account](/images/case-study-1/vitalik-scam-tweet.jpg)
 
 Think about that for a second.
 
