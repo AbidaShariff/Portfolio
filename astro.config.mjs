@@ -29,6 +29,7 @@ export default defineConfig({
   site: siteConfig.site,
   base: '/',
   trailingSlash: siteConfig.trailingSlashes ? 'always' : 'never',
+  compressHTML: true,
   prefetch: true,
   markdown: {
     remarkPlugins: [
