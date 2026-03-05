@@ -161,32 +161,41 @@ if (about.length > 0) {
     {
       projects.length > 0 && (
         <section>
-          <BlockHeader>Trainings/Talks</BlockHeader>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
-            {projects.map((project) => (
-              <div class="border border-accent/15 rounded-[4px] p-4">
-                <h3 class="text-lg font-semibold text-heading2">
-                  {project.url ? (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer">
-                      ## {project.title}
-                    </a>
-                  ) : (
-                    <>## {project.title}</>
+          <details class="group">
+            <summary class="cursor-pointer list-none">
+              <BlockHeader>
+                <span class="flex items-center gap-2">
+                  Trainings/Talks
+                  <span class="text-sm text-foreground/50 group-open:rotate-90 transition-transform duration-200">&#9654;</span>
+                </span>
+              </BlockHeader>
+            </summary>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
+              {projects.map((project) => (
+                <div class="border border-accent/15 rounded-[4px] p-4">
+                  <h3 class="text-lg font-semibold text-heading2">
+                    {project.url ? (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer">
+                        ## {project.title}
+                      </a>
+                    ) : (
+                      <>## {project.title}</>
+                    )}
+                  </h3>
+                  <p class="mt-2 text-sm text-foreground/80">{project.description}</p>
+                  {project.tags && project.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                      {project.tags.map((tag) => (
+                        <span class="px-2 py-0.5 text-xs border border-accent/20 rounded-lg text-accent/80">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   )}
-                </h3>
-                <p class="mt-2 text-sm text-foreground/80">{project.description}</p>
-                {project.tags && project.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-1.5 mt-3">
-                    {project.tags.map((tag) => (
-                      <span class="px-2 py-0.5 text-xs border border-accent/20 rounded-lg text-accent/80">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                </div>
+              ))}
+            </div>
+          </details>
         </section>
       )
     }
