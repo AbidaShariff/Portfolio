@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abida Shariff — Design Preview v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d14;
+      --bg-surface: #12121c;
+      --bg-elevated: #181825;
+      --fg: #cdd6f4;
+      --fg-muted: #6c7086;
+      --fg-dim: #45475a;
+      --pink: #f5a0c8;
+      --pink-bright: #f38ba8;
+      --pink-glow: rgba(245, 160, 200, 0.6);
+      --pink-soft: rgba(245, 160, 200, 0.08);
+      --pink-border: rgba(245, 160, 200, 0.15);
+      --pink-border-hover: rgba(245, 160, 200, 0.4);
+      --heading: #f5e0dc;
+      --link: #f5a0c8;
+      --separator: rgba(205, 214, 244, 0.06);
+      --border: rgba(205, 214, 244, 0.05);
+      --code-bg: rgba(245, 160, 200, 0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.75;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Ambient Glow Undertones ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130%;
+      height: 65%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(245, 160, 200, 0.09) 0%,
+        rgba(245, 160, 200, 0.04) 30%,
+        rgba(245, 160, 200, 0.015) 50%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientPulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientPulse {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* Second ambient glow blob - bottom center */
+    .glow-bottom {
+      position: fixed;
+      bottom: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 45%;
+      background: radial-gradient(
+        ellipse at center bottom,
+        rgba(243, 139, 168, 0.06) 0%,
+        rgba(245, 160, 200, 0.025) 35%,
+        transparent 65%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Scanline Overlay ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(245, 160, 200, 0.02) 2px,
+        rgba(245, 160, 200, 0.02) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Text Glow Effects ─── */
+    .text-glow {
+      text-shadow:
+        0 0 10px rgba(245, 160, 200, 0.7),
+        0 0 25px rgba(245, 160, 200, 0.4),
+        0 0 50px rgba(245, 160, 200, 0.2),
+        0 0 80px rgba(245, 160, 200, 0.08);
+    }
+
+    .text-glow-sm {
+      text-shadow:
+        0 0 8px rgba(245, 160, 200, 0.6),
+        0 0 18px rgba(245, 160, 200, 0.3),
+        0 0 35px rgba(245, 160, 200, 0.12);
+    }
+
+    /* ─── Header ─── */
+    header {
+      margin-bottom: 48px;
+    }
+
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: var(--bg-surface);
+      border: 1px solid var(--pink-border);
+      border-radius: 4px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      box-shadow:
+        0 0 20px rgba(245, 160, 200, 0.06),
+        0 0 40px rgba(245, 160, 200, 0.03),
+        inset 0 0 15px rgba(245, 160, 200, 0.02);
+    }
+
+    .theme-btn {
+      background: var(--bg);
+      border: 1px solid var(--pink-border);
+      color: var(--pink);
+      padding: 6px 14px;
+      border-radius: 3px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--pink-border-hover);
+      box-shadow: 0 0 8px rgba(245, 160, 200, 0.15);
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 32px;
+    }
+
+    nav a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: capitalize;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--pink);
+      text-shadow:
+        0 0 8px rgba(245, 160, 200, 0.5),
+        0 0 16px rgba(245, 160, 200, 0.2);
+    }
+
+    nav a.active {
+      color: var(--pink);
+      text-shadow:
+        0 0 6px rgba(245, 160, 200, 0.4),
+        0 0 12px rgba(245, 160, 200, 0.15);
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--pink);
+      box-shadow:
+        0 0 8px rgba(245, 160, 200, 0.6),
+        0 0 16px rgba(245, 160, 200, 0.3);
+    }
+
+    /* ─── Terminal Prompt ─── */
+    .terminal-prompt {
+      font-size: 13px;
+      color: var(--fg-dim);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .terminal-prompt .user {
+      color: var(--pink);
+      text-shadow: 0 0 6px rgba(245, 160, 200, 0.4);
+    }
+
+    .terminal-prompt .path {
+      color: var(--fg-muted);
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: var(--pink);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+      box-shadow:
+        0 0 8px rgba(245, 160, 200, 0.7),
+        0 0 16px rgba(245, 160, 200, 0.35),
+        0 0 28px rgba(245, 160, 200, 0.15);
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* ─── Banner ─── */
+    .banner {
+      margin-bottom: 48px;
+      padding: 28px;
+      background: var(--bg-surface);
+      border: 1px solid var(--pink-border);
+      border-radius: 4px;
+      position: relative;
+      box-shadow:
+        0 0 25px rgba(245, 160, 200, 0.07),
+        0 0 50px rgba(245, 160, 200, 0.04),
+        0 0 80px rgba(245, 160, 200, 0.02),
+        inset 0 0 35px rgba(245, 160, 200, 0.025);
+    }
+
+    .banner::before {
+      content: '// about.md';
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .banner p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--fg);
+      font-weight: 300;
+    }
+
+    /* ─── Section Headers ─── */
+    .section-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--pink);
+      margin-top: 40px;
+      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .section-header .text-glow-sm {
+      text-shadow:
+        0 0 5px rgba(245, 160, 200, 0.4),
+        0 0 10px rgba(245, 160, 200, 0.2);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--pink-border), transparent 80%);
+      border: none;
+      margin-bottom: 24px;
+      box-shadow:
+        0 0 10px rgba(245, 160, 200, 0.15),
+        0 0 25px rgba(245, 160, 200, 0.06);
+    }
+
+    /* ─── Post Preview ─── */
+    .post-card {
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg-surface);
+      transition: all 0.3s ease;
+      box-shadow:
+        0 0 15px rgba(245, 160, 200, 0.04),
+        inset 0 0 10px rgba(245, 160, 200, 0.015);
+    }
+
+    .post-card:hover {
+      border-color: var(--pink-border-hover);
+      box-shadow:
+        0 0 20px rgba(245, 160, 200, 0.18),
+        0 0 40px rgba(245, 160, 200, 0.08),
+        0 0 70px rgba(245, 160, 200, 0.04),
+        inset 0 0 20px rgba(245, 160, 200, 0.04);
+    }
+
+    .post-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--heading);
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+    }
+
+    .post-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .post-title a:hover {
+      color: var(--pink);
+      text-shadow:
+        0 0 8px rgba(245, 160, 200, 0.5),
+        0 0 20px rgba(245, 160, 200, 0.2);
+    }
+
+    .post-meta {
+      font-size: 12px;
+      color: var(--fg-dim);
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      letter-spacing: 0.03em;
+    }
+
+    .post-meta span::before {
+      content: '>';
+      margin-right: 6px;
+      color: var(--pink);
+      opacity: 0.5;
+    }
+
+    .post-description {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--fg-muted);
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--pink);
+      background: var(--pink-soft);
+      border: 1px solid var(--pink-border);
+      border-radius: 3px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--pink-border-hover);
+      box-shadow:
+        0 0 8px rgba(245, 160, 200, 0.25),
+        0 0 16px rgba(245, 160, 200, 0.1);
+    }
+
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pink);
+      background: transparent;
+      border: 1px solid var(--pink-border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .read-btn {
+      animation: btnPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 0 5px rgba(245, 160, 200, 0.1); }
+      50% { box-shadow: 0 0 12px rgba(245, 160, 200, 0.2), 0 0 25px rgba(245, 160, 200, 0.08); }
+    }
+
+    .read-btn:hover {
+      background: var(--pink-soft);
+      border-color: var(--pink-border-hover);
+      box-shadow:
+        0 0 15px rgba(245, 160, 200, 0.25),
+        0 0 30px rgba(245, 160, 200, 0.1),
+        0 0 50px rgba(245, 160, 200, 0.04);
+      animation: none;
+    }
+
+    /* ─── Blog Post Content (Prose) ─── */
+    .prose {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--separator);
+    }
+
+    .prose h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--pink);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      line-height: 1.35;
+      text-shadow:
+        0 0 10px rgba(245, 160, 200, 0.45),
+        0 0 25px rgba(245, 160, 200, 0.18),
+        0 0 45px rgba(245, 160, 200, 0.07);
+    }
+
+    .prose h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--heading);
+      margin-top: 36px;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+    }
+
+    .prose p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: 14.5px;
+      font-weight: 300;
+    }
+
+    .prose strong {
+      font-weight: 600;
+      color: var(--heading);
+    }
+
+    .prose a {
+      color: var(--pink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245, 160, 200, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .prose a:hover {
+      border-bottom-color: var(--pink);
+      text-shadow:
+        0 0 8px rgba(245, 160, 200, 0.5),
+        0 0 18px rgba(245, 160, 200, 0.2);
+    }
+
+    .prose blockquote {
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: var(--bg-surface);
+      border-left: 2px solid var(--pink);
+      border-radius: 0 4px 4px 0;
+      font-style: italic;
+      color: var(--fg-muted);
+      box-shadow:
+        inset 0 0 30px rgba(245, 160, 200, 0.04),
+        0 0 20px rgba(245, 160, 200, 0.05),
+        -4px 0 15px rgba(245, 160, 200, 0.04);
+    }
+
+    .prose ul {
+      margin: 16px 0;
+      padding-left: 20px;
+      list-style: none;
+    }
+
+    .prose li {
+      margin-bottom: 8px;
+      line-height: 1.75;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .prose li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--pink);
+      opacity: 0.5;
+      font-size: 13px;
+    }
+
+    .prose code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: var(--code-bg);
+      padding: 3px 8px;
+      border-radius: 3px;
+      color: var(--pink);
+      border: 1px solid rgba(245, 160, 200, 0.08);
+    }
+
+    .prose pre {
+      margin: 24px 0;
+      padding: 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--pink-border);
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      position: relative;
+      box-shadow:
+        0 0 25px rgba(245, 160, 200, 0.06),
+        0 0 50px rgba(245, 160, 200, 0.025),
+        inset 0 0 25px rgba(245, 160, 200, 0.025);
+    }
+
+    .prose pre::before {
+      content: 'terminal';
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--pink-soft);
+      color: var(--fg-dim);
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 0 3px 0 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .prose pre code {
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      color: var(--fg);
+    }
+
+    .prose hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(245, 160, 200, 0.2), transparent);
+      margin: 48px 0;
+      box-shadow: 0 0 12px rgba(245, 160, 200, 0.08);
+    }
+
+    .prose img {
+      max-width: 100%;
+      border-radius: 4px;
+      margin: 24px 0;
+      border: 1px solid var(--pink-border);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      margin-top: auto;
+      padding-top: 48px;
+      text-align: center;
+      color: var(--fg-dim);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--separator);
+      padding-bottom: 32px;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 90%;
+      height: 150px;
+      background: radial-gradient(
+        ellipse at center bottom,
+        rgba(245, 160, 200, 0.06) 0%,
+        rgba(245, 160, 200, 0.02) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .social-links a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .social-links a:hover {
+      color: var(--pink);
+      text-shadow:
+        0 0 8px rgba(245, 160, 200, 0.5),
+        0 0 18px rgba(245, 160, 200, 0.2);
+    }
+
+    /* ─── Preview Label ─── */
+    .preview-label {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: var(--pink-bright);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 3px;
+      z-index: 10000;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(243, 139, 168, 0.4);
+    }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(245, 160, 200, 0.2);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(245, 160, 200, 0.35);
+    }
+
+    /* ─── Selection ─── */
+    ::selection {
+      background: rgba(245, 160, 200, 0.25);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-label">design preview v4</div>
+<div class="glow-bottom"></div>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-bar">
+      <button class="theme-btn">catppuccin-mocha ▾</button>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Projects ▾</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Terminal Prompt -->
+  <div class="terminal-prompt">
+    <span class="user">abida@redsentry</span>:<span class="path">~/portfolio</span>$ cat about.md
+    <span class="cursor-blink"></span>
+  </div>
+
+  <!-- Banner / Bio -->
+  <section class="banner">
+    <p>Abida Shariff is a Lead Security Engineer at RedSentry who loves breaking things. She works across web, mobile (Android/iOS), cloud, and internal infrastructure, approaching every engagement with an attacker's curiosity and persistence to find risks before real adversaries can. While she holds OSCP, CEH, and eJPT certifications, she believes the real lessons come from hands-on experience in the field. Beyond client work, Abida is an active speaker and Chapter Lead at Null Bangalore, where she mentors aspiring security professionals and contributes to building a stronger security community.</p>
+  </section>
+
+  <!-- Tags Section -->
+  <h2 class="section-header"><span class="text-glow-sm">Tags</span></h2>
+  <hr class="section-divider">
+  <div style="margin-bottom: 32px;">
+    <span class="tag">web3</span>
+    <span class="tag">security</span>
+    <span class="tag">web-app-pentesting</span>
+    <span class="tag">android-pentesting</span>
+    <span class="tag">ios-pentesting</span>
+  </div>
+
+  <!-- Latest Posts -->
+  <h2 class="section-header"><span class="text-glow-sm">Latest Posts</span></h2>
+  <hr class="section-divider">
+
+  <article class="post-card">
+    <h3 class="post-title"><a href="#">Web3 Phishing Doesn't Steal Passwords. It Steals Your Funds</a></h3>
+    <div class="post-meta">
+      <span>Feb 24, 2026</span>
+      <span>8 min read</span>
+    </div>
+    <p class="post-description">If you work in AppSec, Red Teaming, or SOC, your gut says protect credentials. But Web3 phishing skips passwords entirely and goes straight for your wallet approvals.</p>
+    <div>
+      <span class="tag">web3</span>
+      <span class="tag">security</span>
+    </div>
+    <button class="read-btn">read more →</button>
+  </article>
+
+  <!-- Blog Post Content Preview -->
+  <div class="prose">
+    <h2>Sample Blog Post Content</h2>
+
+    <p>If you've been working in Application Security, Red Teaming, SOC, or Cloud Security for a while, your gut reaction to phishing is probably something like:</p>
+
+    <blockquote>
+      "If I keep the credentials safe, the account's safe."
+    </blockquote>
+
+    <p>But Web3 phishing doesn't always care about your password. What attackers really want is something riskier: <strong>your approval.</strong></p>
+
+    <h3>Web2 Phishing vs Web3 Draining</h3>
+
+    <p>Attackers steal your credentials so they can be "you" later. Then they poke around your systems: sessions, MFA, password resets, keys etc.</p>
+
+    <ul>
+      <li>"Connect wallet"</li>
+      <li>"Verify"</li>
+      <li>"Claim"</li>
+      <li>"Mint"</li>
+      <li>"Airdrop eligible"</li>
+    </ul>
+
+    <p>Feels like logging in, but it acts like you're approving a bank transfer.</p>
+
+    <h3>Code Example</h3>
+
+    <pre><code>// Example: Checking wallet approvals
+const approvals = await contract.allowance(owner, spender);
+if (approvals.gt(ethers.constants.Zero)) {
+  console.log("Active approval detected — review immediately");
+}</code></pre>
+
+    <p>That's the Web3 reality: <strong>your front-end is now part of the vault.</strong></p>
+
+    <hr>
+
+    <h2>Why Web2 Security Folks Need to Care</h2>
+
+    <p><strong>In Web3, one click can be the point of no return:</strong></p>
+
+    <ul>
+      <li>Approvals stick around unless you revoke them</li>
+      <li>Assets can move instantly</li>
+      <li>Incident response might only start after the money's gone</li>
+    </ul>
+
+    <p>So your job isn't just "catch it after the fact." It's <strong>prevent unsafe authorization in the first place.</strong> That's a product problem, a UX problem, and yes — still an <a href="#">AppSec problem</a>.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#">twitter/x</a>
+      <a href="#">linkedin</a>
+      <a href="#">github</a>
+    </div>
+    <span>abida shariff © 2025 :: powered by astro</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
