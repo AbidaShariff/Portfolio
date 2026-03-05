@@ -9,7 +9,7 @@ const config: SiteConfig = {
   description:
     'Lead Security Engineer | Speaker | Trainer | Cybersecurity Professional',
   // The author of the site, used in the footer, SEO, and RSS feed.
-  author: 'Katy Kookaburra',
+  author: 'Abida Shariff',
   // Keywords for SEO, used in the meta tags.
   tags: ['Web Application Pentesting', 'Android Pentesting', 'iOS Pentesting', 'Red Teaming', 'Blockchain Security', 'Web3'],
   // Path to the image used for generating social media previews.
